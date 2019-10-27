@@ -3,6 +3,9 @@ module.exports = {
     es6: true,
     node: true,
   },
+  /**
+   * Recupera a base de regras da Airbnb
+   */
   extends: [
     'airbnb-base',
   ],
@@ -14,6 +17,11 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+  /**
+   * Adiciona regras de exceção para o projeto. Pode ser criado junto com o time
+   * de dev.
+   * Não necessita de "this" obrigatoriamente nos métodos de classe
+   */
   rules: {
     "class-methods-use-this": "off",
     "no-param-reasign": "off",
