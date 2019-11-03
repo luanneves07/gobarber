@@ -2,6 +2,11 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
+  async index(req, res) {
+    const users = await User.findAll();
+    return res.json(users);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
@@ -69,13 +74,14 @@ class UserController {
       return res.status(401).json({ error: 'Password does not match!' });
     }
 
-    const { id, name, provider } = await user.update(req.body);
+    const { id, name, provider, avatarId } = await user.update(req.body);
 
     return res.json({
       id,
       name,
       email,
       provider,
+      avatarId,
     });
   }
 }
