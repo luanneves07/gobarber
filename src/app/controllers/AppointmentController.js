@@ -58,6 +58,13 @@ class AppointmentController {
     }
 
     /**
+     * Verifica se eh agendamento de uma pessoa para ela mesma
+     */
+    if (provider_id === req.userId) {
+      return res.status(401).json({ error: 'Can not schedule to itself' });
+    }
+
+    /**
      * Verifica por datas passadas
      */
     const hourStart = startOfHour(parseISO(date));
