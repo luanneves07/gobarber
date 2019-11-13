@@ -1,9 +1,9 @@
-import { Router } from 'express';
 import multer from 'multer';
+import { Router } from 'express';
 import multerConfig from './config/multer';
 
-import FileController from './app/controllers/FileController';
 import UserController from './app/controllers/UserController';
+import FileController from './app/controllers/FileController';
 import SessionController from './app/controllers/SessionControler';
 import ProviderController from './app/controllers/ProviderController';
 import ScheduleController from './app/controllers/ScheduleController';
@@ -26,6 +26,7 @@ routes.get('/providers/:providerId/available', AvailableController.index);
 
 routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
+routes.post('/files', upload.single('file'), FileController.store);
 
 routes.get('/appointments', AppointmentController.index);
 routes.post('/appointments', AppointmentController.store);
